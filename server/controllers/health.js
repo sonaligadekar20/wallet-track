@@ -1,8 +1,9 @@
+import { responder } from "./../util.js";
+
 const getApiHealth = async (req, res)=>{
-    res.json({
-        success: true,
-        message: 'Server is running'
-    })
+
+     return responder({res, success: true, message: 'Server is running' })
+
 }
 
 export {getApiHealth};
