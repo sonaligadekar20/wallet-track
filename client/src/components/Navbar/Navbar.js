@@ -5,7 +5,7 @@ const Navbar = () => {
   const [user, setUser] = useState({})
 
   useEffect(() => {
-    const storeUser = JSON.parse(localStorage.getItem("userWalletTracker") || "{}")
+    const storeUser = JSON.parse(localStorage.getItem("user") || "{}")
     setUser(storeUser)
 
   }, [])
@@ -35,11 +35,11 @@ const Navbar = () => {
               <li class="nav-item ms-5 fs-5">
                 <Link to="/login" class="nav-link ">Login</Link>
               </li>
-              <li className='text-light nav-link ms-4 fs-5 nav-item'> 👋 Hello,{user.userName || 'User!'}</li>
+              <li className='text-Dark nav-link ms-4 fs-5 nav-item'> 👋 Hello,{user.name || 'User!'}</li>
             </ul>
             {
-              user.userName ? (<span className='text-light ms-3 fs-5 logout-link nav-item' onClick={() => {
-                localStorage.removeItem('userWalletTrack')
+              user?.name ? (<span className='text-dark ms-3 fs-5 logout-link nav-item' onClick={() => {
+                localStorage.removeItem('user')
                 window.location.href = '/login'
               }}>Logout</span>) : null
             }

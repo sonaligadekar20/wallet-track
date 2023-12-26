@@ -1,0 +1,27 @@
+.login-form{
+    width:450px;
+    /* height: 600px; */
+    background-color: white;
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px grey;
+}
+.login-btn{
+    display: block;
+    margin: 0 auto;
+    background-color:black;
+    border: none;
+    border-radius: 10px;
+    min-width: 130px;
+    padding: 5px 7px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    display: block;
+    margin: 12px auto;
+    margin-top: 15px;
+}
+.text-right{
+    text-align: right;
+}
