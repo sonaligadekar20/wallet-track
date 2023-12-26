@@ -58,9 +58,6 @@ function App() {
         transactions?.map((transactions, index) => {
           const { _id, amount, type, category, description, createdAt} = transactions;
 
-
-         
-
           const date = new Date(createdAt).toLocaleDateString();
           const time = new Date(createdAt).toLocaleTimeString();
 

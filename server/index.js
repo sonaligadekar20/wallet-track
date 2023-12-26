@@ -35,7 +35,10 @@ app.get('/api/transactions',getApiTransaction );
 app.put('/api/transaction/:id', putApiTransaction);
 
 // Delete transaction
-app.delete('/api/transaction/:id', deleteApiTransaction )
+app.delete('/api/transaction/:id', deleteApiTransaction );
+
+// // Get/transactions/user/:id
+// app.get('/api/transactions/user/:id', )
 
 // Post signup
 app.post('/api/signup', postApiSignup );

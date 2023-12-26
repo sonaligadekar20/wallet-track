@@ -1,5 +1,5 @@
 import { responder } from "./../util.js";
-import Transaction from "./../models/transaction.js";
+import Transaction from "./../models/Transaction.js";                                       
 
 const postApiTransaction = async (req, res) => {
     const { amount, type, category, description } = req.body;
@@ -67,8 +67,8 @@ const deleteApiTransaction = async (req, res) =>{
         data: {
             id: id
         },
-        message: 'Transaction deleted'
+        message: 'Transaction deleted successfully.'
     })
 }
 
-export { postApiTransaction , getApiTransaction, putApiTransaction, deleteApiTransaction }
+export { postApiTransaction , getApiTransaction, putApiTransaction, deleteApiTransaction}
