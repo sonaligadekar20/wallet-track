@@ -1,25 +1,9 @@
-// import React from 'react';
-// import './Login.css';
-// import axios from 'axios';
-
-// function Login (){
-
-//     return (
-//        <>
-//     <h1>Login</h1>
-    
-//        </>
-//     )
-// }
-// export default Login
-
-
-
 import React,{useEffect, useState} from 'react';
 import axios  from 'axios';
 import {Link} from "react-router-dom";
 import Navbar from '../../components/Navbar/Navbar';
 import "./Login.css";
+import showToast from "crunchy-toast";
 
 function Login () {
     const [email, setEmail] = useState('');
@@ -35,7 +19,7 @@ function Login () {
             password: password
         })
 
-        alert(response?.data?.message)
+        showToast(response.data.message, "success", 3000);
 
         if(response?.data?.success){
             localStorage.setItem("user", JSON.stringify(response?.data?.data))
@@ -47,7 +31,7 @@ function Login () {
         const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
 
         if(storageUser?.email){
-            alert("You are already logged in!");
+            showToast("You are already logged in!", "danger", 5000);
             window.location.href = "/";
         }
     },[])

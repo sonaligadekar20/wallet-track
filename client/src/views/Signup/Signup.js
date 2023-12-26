@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './Signup.css';
 import {Link} from "react-router-dom";
+import showToast from "crunchy-toast";
 import Navbar from './../../components/Navbar/Navbar.js';
 
 
@@ -15,25 +16,25 @@ function Signup() {
 
    const signup = async ()=>{
        if(!name){
-           alert("Name is required");
+         showToast("name is required", "alert", 4000);
            return;
        }
 
        if(!email){
-           alert("Email is required");
+         showToast("email is required", "alert", 4000);
            return;
        }
 
        if(!password){
-           alert("Password is required");
+         showToast("password is required", "alert", 4000);
            return;
        }
        if(!mobile){
-           alert("Mobile is required");
+         showToast("mobile number is required", "alert", 4000);
            return;
        }
        if(!address){
-           alert("Address is required");
+         showToast("address is required", "alert", 4000);
            return;
        }
        const response = await axios.post("/api/signup",{
@@ -132,7 +133,7 @@ function Signup() {
                      setGender("male")
                   }}
                />
-               <label htmlFor="male">male</label>
+               <label htmlFor="male" className='me-4'>male</label>
                <input type="radio"
                   id="female"
                   name="gender"
@@ -142,7 +143,7 @@ function Signup() {
                      setGender("female")
                   }}
                />
-               <label htmlFor="female">Female</label>
+               <label htmlFor="female" >Female</label>
             </div>
 
             <button type="button" className="signup-btn" onClick={signup}>Signup</button>
