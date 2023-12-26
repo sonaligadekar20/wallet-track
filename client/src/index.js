@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Home from './views/Home/Home.js';
 import AddTransaction from './views/AddTransaction/AddTransaction.js';
+import MyTransaction from './views/MyTransaction/MyTransaction.js';
 import Login from './views/Login/Login.js';
 import Signup from './views/Signup/Signup.js';
-
 
 
 const router = createBrowserRouter([{
@@ -19,6 +18,10 @@ const router = createBrowserRouter([{
   {
     path: '/addtransaction',
     element: <AddTransaction/>
+  },
+  {
+    path: '/mytransaction',
+    element: <MyTransaction/>
   },
   {
     path: '/signup',
