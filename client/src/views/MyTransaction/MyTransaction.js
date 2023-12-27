@@ -53,7 +53,7 @@ function MyTransaction() {
                 <h2 className='text-center'  >My Transaction</h2>
 
                 <h4 className='text-success mt-4'>Credit : {creditSum} </h4>
-                <h4 className='text-danger '>Debit : {debitSum} </h4>
+                <h4 className='text-danger '> Debit : {debitSum} </h4>
                 {
                     transactions?.map((transactions, index) => {
                         const { _id, amount, type, category, description, createdAt } = transactions;
