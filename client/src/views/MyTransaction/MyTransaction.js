@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./MyTransaction.css";
+import showToast from 'crunchy-toast';
 import Navbar from '../../components/Navbar/Navbar';
 
 function MyTransaction() {
+    const [user, setUser] = useState({});
     const [transactions, setTransactions] = useState([]);
     const [creditSum, setCreditSum] = useState(0);
     const [debitSum, setDebitSum] = useState(0);
@@ -42,9 +44,27 @@ function MyTransaction() {
         setTransactions(transactionsData);
     };
 
-    useEffect(() => {
-        loadTransactions();
-    }, [])
+    // useEffect(() => {
+    //     loadTransactions();
+    // }, [])
+
+    // showToast(response?.data?.message, 'success', 3000);
+
+    // if (response?.data?.success) {
+    //    window.location.href = "/mytransacation"
+    // }
+
+ useEffect(() => {
+    const storeUser = JSON.parse(localStorage.getItem("user") || "{}");
+
+    if (storeUser?.email) {
+       setUser(storeUser);
+    } else {
+       showToast("You are not logged in!", "danger", 5000);
+       window.location.href = "/login";
+    }  
+    loadTransactions ()
+ }, []);
 
     return (
         <div>

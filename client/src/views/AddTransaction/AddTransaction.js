@@ -27,7 +27,7 @@ function AddTransaction() {
       showToast(response?.data?.message, 'success', 3000);
 
       if (response?.data?.success) {
-         window.location.href = "/mytransacation"
+         window.location.href = "mytransaction"
       }
    }
    useEffect(() => {
