@@ -7,21 +7,7 @@
     border-radius: 10px;
     box-shadow: 0px 0px 5px 0px grey;
 }
-.login-btn{
-    display: block;
-    margin: 0 auto;
-    background-color:rgb(47, 131, 226);
-    border: none;
-    border-radius: 10px;
-    min-width: 130px;
-    padding: 5px 7px;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    display: block;
-    margin: 12px auto;
-    margin-top: 25px;
-}
+
 .text-right{
     text-align: right;
 }

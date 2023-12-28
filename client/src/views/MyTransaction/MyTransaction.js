@@ -70,10 +70,10 @@ function MyTransaction() {
         <div>
             <Navbar />
             <div className='my-transaction'>
-                <h2 className='text-center'  >My Transaction</h2>
+                <h2 className='text-center'> My Transaction </h2>
 
                 <h4 className='text-success mt-4'>Credit : {creditSum} </h4>
-                <h4 className='text-danger '> Debit : {debitSum} </h4>
+                <h4 className='text-danger'> Debit : {debitSum} </h4>
                 {
                     transactions?.map((transactions, index) => {
                         const { _id, amount, type, category, description, createdAt } = transactions;
@@ -88,13 +88,12 @@ function MyTransaction() {
                             </span>
                             <span className='ms-4'>
                                 {
-                                    type === "debit" ? "debited" : "credited"
+                                 type === "debit" ? "debited" : "credited"
                                 } on {date} at {time}
                             </span>
                             <span className='transaction-category'>
                                 {CATEGORY_EMOJI_MAP[category]}
                                 {category}
-
                             </span>
                             <hr />
                             <p>

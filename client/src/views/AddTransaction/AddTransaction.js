@@ -116,7 +116,7 @@ function AddTransaction() {
                   />
 
                   <div class="d-grid gap-2">
-                     <button className="btn button bg-primary text-light fs-5 fw-medium mt-3 "
+                     <button className="btn btn-primary text-light fs-5 fw-medium mt-3 "
                         type="button" onClick={addTransaction}> Add Transacation </button>
                   </div>
                </div>

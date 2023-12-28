@@ -1,7 +1,7 @@
 import { responder } from "./../util.js";
 import Transaction from "./../models/Transaction.js";                                       
 
-const postApiTransaction = async (req, res) => {
+ const postApiTransaction = async (req, res) => {
     const { amount, type, category, description } = req.body;
 
     const transaction = new Transaction({
@@ -33,6 +33,28 @@ const getApiTransaction = async (req, res) => {
         data: allTransactions})
   
 }
+
+const getApiTransactionUserById = async (req, res)=>{
+    try {
+        const { id } = req.params;
+    
+        const transactionUserById = await Transaction.find({ user: id }).populate("user");
+    
+        transactionUserById.forEach((singleTransaction) => {
+          singleTransaction.user.password = undefined;
+        });
+        res.json({
+          success: true,
+          data: transactionUserById,
+          message: "user fetch transaction successfully...",
+        });
+      } catch (err) {
+        res.json({
+          success: false,
+          message: err.message,
+        });
+      }
+    };
 
 const putApiTransaction = async (req, res) =>{
     const { id } = req.params;
@@ -71,4 +93,4 @@ const deleteApiTransaction = async (req, res) =>{
     })
 }
 
-export { postApiTransaction , getApiTransaction, putApiTransaction, deleteApiTransaction}
+export { postApiTransaction , getApiTransaction, getApiTransactionUserById, putApiTransaction, deleteApiTransaction}

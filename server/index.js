@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { getApiHealth } from "./controllers/health.js"
-import { postApiTransaction, getApiTransaction, putApiTransaction, deleteApiTransaction} from './controllers/transaction.js';
+import { postApiTransaction, getApiTransaction, putApiTransaction, deleteApiTransaction, getApiTransactionUserById} from './controllers/transaction.js';
 import { postApiSignup, postApiLogin } from './controllers/user.js';
 
 const app = express();
@@ -31,6 +31,8 @@ app.post('/api/transaction', postApiTransaction );
 // Get transaction
 app.get('/api/transactions',getApiTransaction );
 
+app.get('/api/transaction/user/:id',getApiTransactionUserById,)
+
 // Put transaction
 app.put('/api/transaction/:id', putApiTransaction);
 
@@ -38,7 +40,7 @@ app.put('/api/transaction/:id', putApiTransaction);
 app.delete('/api/transaction/:id', deleteApiTransaction );
 
 // // Get/transactions/user/:id
-// app.get('/api/transactions/user/:id', )
+app.get('/api/transactions/user/:id', getApiTransactionUserById )
 
 // Post signup
 app.post('/api/signup', postApiSignup );

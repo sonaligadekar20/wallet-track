@@ -145,10 +145,10 @@ function Signup() {
                />
                <label htmlFor="female" >Female</label>
             </div>
-
-            <button type="button" className="signup-btn" onClick={signup}>Signup</button>
-
-            <p className="text-right">
+           <div className='text-center mt-3 '>
+           <button type="button" className="btn btn-primary px-4" onClick={signup}>Signup</button>
+           </div>
+            <p className="text-right mt-3">
                <Link to="/login">Already have an account?</Link>
             </p>
 

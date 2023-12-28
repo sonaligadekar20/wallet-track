@@ -2,7 +2,7 @@ import React from 'react';
 import './Home.css'
 import Navbar from '../../components/Navbar/Navbar.js';
 import WalletPng from './images/wallet-tracker.png';
-
+import { Link } from 'react-router-dom';
 
 function Home() {
     return (
@@ -24,12 +24,11 @@ function Home() {
                         <p>A wallet tracker serves as a valuable tool for personal finance management, empowering individuals to make informed decisions about their money and work towards achieving their financial goals.</p>     
                     </div>
 
-                    <button className='btn btn-danger'>Start Here ➡️</button>
+                    <Link to= '/login' className='btn btn-primary'>Start Here ➡️ </Link> 
                 </div>
 
-
             </div>
-
+       
         </div>
     )
 }

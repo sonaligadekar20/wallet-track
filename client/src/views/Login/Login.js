@@ -11,14 +11,14 @@ function Login () {
 
     const login = async()=>{
         if(!email){
-            alert("Email is required");
+            showToast("email is required", "alert", 4000);
             return;
         }
         const response = await axios.post("/api/login",{
             email : email,
             password: password
         })
-
+       
         showToast(response.data.message, "success", 3000);
 
         if(response?.data?.success){
@@ -67,10 +67,11 @@ function Login () {
                        setPassword(e.target.value);
                     }}/>
                 </div>
-
-                <button type="button" className='login-btn' onClick={login}>Login</button>
-
-                <p  className='text-right'>
+            <div className='text-center mt-4 '>
+            <button type="button" className='btn btn-primary px-4 ' onClick={login}>Login</button>
+            </div>
+                
+                <p  className='text-right mt-3'>
                 <Link to="/signup">Create a new account?</Link>
                 </p>
   
