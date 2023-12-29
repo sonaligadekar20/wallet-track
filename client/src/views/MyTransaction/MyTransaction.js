@@ -44,6 +44,16 @@ function MyTransaction() {
         setTransactions(transactionsData);
     };
 
+    const deleteTransaction = async (id) =>{
+        const response = await axios.delete(`/api/transaction/${id}`)
+        if (response?.data?.success){
+            loadTransactions();
+        }
+        showToast('delete transaction successfully', 'success', 6000);
+    };
+
+
+
     // useEffect(() => {
     //     loadTransactions();
     // }, [])
@@ -65,6 +75,8 @@ function MyTransaction() {
     }  
     loadTransactions ()
  }, []);
+
+
 
     return (
         <div>
@@ -99,6 +111,9 @@ function MyTransaction() {
                             <p>
                                 {description}
                             </p>
+                            <span className='delete-icon' onClick={()=>{
+                            deleteTransaction(_id)
+                            }}>🗑️</span>
                         </div>
                         )
                     })
