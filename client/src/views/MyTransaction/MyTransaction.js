@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./MyTransaction.css";
+import { useParams } from 'react-router-dom';
 import showToast from 'crunchy-toast';
 import Navbar from '../../components/Navbar/Navbar';
 
@@ -114,6 +115,10 @@ function MyTransaction() {
                             <span className='delete-icon' onClick={()=>{
                             deleteTransaction(_id)
                             }}>🗑️</span>
+
+                            <span className='' onClick={()=>{
+
+                            }}></span>
                         </div>
                         )
                     })

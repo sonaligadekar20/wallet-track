@@ -31,7 +31,27 @@ const getApiTransaction = async (req, res) => {
     return responder({res,  success: true,
         message: 'Successfully fetched all transactions',
         data: allTransactions})
-  
+}
+
+const getApiTransactionById = async (req, res) =>{
+    const {id} = req.params;
+try{
+    
+    const transactionById = await Transaction.findOne({_id : id});
+    return responder({
+        res, 
+        success: true,
+        data: transactionById,
+        message: 'Transaction get successfully.'
+    })
+}
+catch(err){
+    return responder({
+        res, 
+        success: false,
+        message: 'Transaction not featch.'
+    })
+}
 }
 
 const getApiTransactionUserById = async (req, res)=>{
@@ -93,4 +113,4 @@ const deleteApiTransaction = async (req, res) =>{
     })
 }
 
-export { postApiTransaction , getApiTransaction, getApiTransactionUserById, putApiTransaction, deleteApiTransaction}
+export { postApiTransaction , getApiTransaction, getApiTransactionById, getApiTransactionUserById, putApiTransaction, deleteApiTransaction}
