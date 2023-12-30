@@ -13,6 +13,20 @@ function UpdateTransaction() {
    const [category, setCategory] = useState('')
    const [description, setDescription] = useState('')
 
+   const {id} = useParams();
+   const loadTransactions = async () =>{
+      const response = await axios.get(`/api/transaction/${id}`)
+      const {amount, type, description, category} = response?.data?.data;
+   
+      setAmount(amount)
+      setType(type)
+      setDescription(description)
+      setCategory(category)
+     }
+     useEffect(() => {
+      loadTransactions();
+    }, []);
+
    const updateTransaction = async () => {
       const storeUser = JSON.parse(localStorage.getItem('user'));
 
@@ -22,7 +36,6 @@ function UpdateTransaction() {
          type: type,
          description: description,
          category: category
-
       })
 
       showToast(response?.data?.message, 'success', 3000);
@@ -74,7 +87,7 @@ function UpdateTransaction() {
                      }}
                   />
                   <label className="type-text ms-2 ">Credit</label>
-         
+      
                       <input
                         type="radio"
                         id="debit"
@@ -122,7 +135,6 @@ function UpdateTransaction() {
                         type="button" onClick={updateTransaction}> Update Transacation </button>
                   </div>
 
-                  
                </div>
 
             </form>

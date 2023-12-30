@@ -29,9 +29,17 @@
     position: absolute;
     top: 75px;
     right: 20px;
-    /* border-radius: 50px;
-    border: 1 px solid grey;
-    box-shadow: 0, 0, 0.2px, 0.2px rgb(33, 31, 31); */
+    cursor: pointer;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+    font-size: 18px;
+    padding: 3px;
+    border-radius: 50px ;
+    margin: 3.5px;
+}
+.edit-icon{
+    position: absolute;
+    top: 75px;
+    right: 80px;
     cursor: pointer;
     box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
     font-size: 18px;

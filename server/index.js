@@ -31,7 +31,7 @@ app.post('/api/transaction', postApiTransaction );
 // Get transaction
 app.get('/api/transactions',getApiTransaction );
 
-app.get('/api/transaction/:id', getApiTransactionById )
+app.get('/api/transaction/:id', getApiTransactionById );
 
 // Put transaction
 app.put('/api/transaction/:id', putApiTransaction);

@@ -44,6 +44,10 @@ function MyTransaction() {
         setDebitSum(totalDebit);
         setTransactions(transactionsData);
     };
+   
+      const updateTransaction = async( id )=>{
+        window.location.href=`/updatetransaction/${id}`
+      }
 
     const deleteTransaction = async (id) =>{
         const response = await axios.delete(`/api/transaction/${id}`)
@@ -52,8 +56,6 @@ function MyTransaction() {
         }
         showToast('delete transaction successfully', 'success', 6000);
     };
-
-
 
     // useEffect(() => {
     //     loadTransactions();
@@ -76,7 +78,6 @@ function MyTransaction() {
     }  
     loadTransactions ()
  }, []);
-
 
 
     return (
@@ -116,9 +117,9 @@ function MyTransaction() {
                             deleteTransaction(_id)
                             }}>🗑️</span>
 
-                            <span className='' onClick={()=>{
-
-                            }}></span>
+                            <span className='edit-icon' onClick={()=>{
+                           updateTransaction(_id)
+                            }}>✏️</span>
                         </div>
                         )
                     })

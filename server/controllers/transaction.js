@@ -59,10 +59,10 @@ const getApiTransactionUserById = async (req, res)=>{
         const { id } = req.params;
     
         const transactionUserById = await Transaction.find({ user: id }).populate("user");
-    
-        transactionUserById.forEach((singleTransaction) => {
-          singleTransaction.user.password = undefined;
-        });
+    +
+        // transactionUserById.forEach((singleTransaction) => {
+        //   singleTransaction.user.password = undefined;
+        // });
         res.json({
           success: true,
           data: transactionUserById,
