@@ -18,32 +18,36 @@ function UpdateTransaction() {
       const response = await axios.get(`/api/transaction/${id}`)
       const {amount, type, description, category} = response?.data?.data;
    
-      setAmount(amount)
-      setType(type)
-      setDescription(description)
-      setCategory(category)
+      setAmount(amount);
+      setType(type);
+      setDescription(description);
+      setCategory(category);
      }
      useEffect(() => {
       loadTransactions();
     }, []);
 
    const updateTransaction = async () => {
-      const storeUser = JSON.parse(localStorage.getItem('user'));
-
-      const response = await axios.post('/api/transaction/', {
-         user: storeUser?._id,
-         amount: amount,
-         type: type,
-         description: description,
-         category: category
+    
+      const response = await axios.put(`/api/transaction/${id}`, {
+         user,
+         amount,
+         type,
+         description,
+         category
       })
 
       showToast(response?.data?.message, 'success', 3000);
+      
+      setAmount('')
+      setCategory('')
+      setDescription('')
+      setType('')
 
       if (response?.data?.success) {
-         window.location.href = "mytransaction"
+         window.location.href = "/mytransaction"
       }
-   }
+   };
 
    useEffect(() => {
       const storeUser = JSON.parse(localStorage.getItem("user") || "{}");
@@ -54,7 +58,8 @@ function UpdateTransaction() {
          showToast("You are not logged in!", "danger", 5000);
          window.location.href = "/login";   
       }
-   }, []);
+   }, 
+   []);
 
    return (
       <div>
@@ -87,7 +92,6 @@ function UpdateTransaction() {
                      }}
                   />
                   <label className="type-text ms-2 ">Credit</label>
-      
                       <input
                         type="radio"
                         id="debit"

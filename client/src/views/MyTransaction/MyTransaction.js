@@ -12,8 +12,8 @@ function MyTransaction() {
     const [debitSum, setDebitSum] = useState(0);
 
     const CATEGORY_EMOJI_MAP = {
-        "food": "🍔",
-        "entertainment": "🎹",
+        "food" : "🍔",
+        "entertainment" : "🎹",
         "rent": "🏠",
         "shopping": "🛍️",
         "travel": "✈️",
@@ -57,16 +57,6 @@ function MyTransaction() {
         showToast('delete transaction successfully', 'success', 6000);
     };
 
-    // useEffect(() => {
-    //     loadTransactions();
-    // }, [])
-
-    // showToast(response?.data?.message, 'success', 3000);
-
-    // if (response?.data?.success) {
-    //    window.location.href = "/mytransacation"
-    // }
-
  useEffect(() => {
     const storeUser = JSON.parse(localStorage.getItem("user") || "{}");
 
@@ -106,7 +96,7 @@ function MyTransaction() {
                                 } on {date} at {time}
                             </span>
                             <span className='transaction-category'>
-                                {CATEGORY_EMOJI_MAP[category]}
+                                {CATEGORY_EMOJI_MAP[category] } 
                                 {category}
                             </span>
                             <hr />
