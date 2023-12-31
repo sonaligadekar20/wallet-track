@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import showToast from "crunchy-toast";
 import Navbar from './../../components/Navbar/Navbar.js';
 
-
 function Signup() {
    const [name, setName] = useState('');
    const [email, setEmail] = useState('');

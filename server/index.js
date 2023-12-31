@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
+import path from 'path';
 
 import { getApiHealth } from "./controllers/health.js"
 import { postApiTransaction, getApiTransaction, putApiTransaction, deleteApiTransaction, getApiTransactionUserById, getApiTransactionById} from './controllers/transaction.js';
@@ -9,6 +10,8 @@ import { postApiSignup, postApiLogin } from './controllers/user.js';
 
 const app = express();
 app.use(express.json());
+
+const __dirname = path.resolve();
 
 const connectDB = async () => {
     try{
@@ -47,6 +50,14 @@ app.post('/api/signup', postApiSignup );
 
 // Post login
 app.post('/api/login', postApiLogin )
+
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+  
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+    });
+  }
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
