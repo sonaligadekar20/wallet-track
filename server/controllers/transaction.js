@@ -1,5 +1,5 @@
 import { responder } from "./../util.js";
-import Transaction from "./../models/Transaction.js";
+import Transaction from '../models/Transaction.js'
 
 const postApiTransaction = async (req, res) => {
     const { user, amount, type, category, description } = req.body;
