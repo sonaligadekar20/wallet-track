@@ -1,10 +1,11 @@
 import { responder } from "./../util.js";
-import Transaction from "./../models/Transaction.js";                                       
+import Transaction from "./../models/Transaction.js";
 
- const postApiTransaction = async (req, res) => {
-    const { amount, type, category, description } = req.body;
+const postApiTransaction = async (req, res) => {
+    const { user, amount, type, category, description } = req.body;
 
     const transaction = new Transaction({
+        user,
         amount,
         type,
         category,
@@ -13,11 +14,11 @@ import Transaction from "./../models/Transaction.js";
 
     try {
         const savedTransaction = await transaction.save();
-        
-        return responder({res, success: true, message: 'Transaction saved', data: savedTransaction});
-       
+
+        return responder({ res, success: true, message: 'Transaction saved', data: savedTransaction });
+
     } catch (err) {
-        return responder({ 
+        return responder({
             res,
             success: false,
             message: err.message
@@ -28,58 +29,60 @@ import Transaction from "./../models/Transaction.js";
 const getApiTransaction = async (req, res) => {
     const allTransactions = await Transaction.find();
 
-    return responder({res,  success: true,
+    return responder({
+        res, success: true,
         message: 'Successfully fetched all transactions',
-        data: allTransactions})
-}
-
-const getApiTransactionById = async (req, res) =>{
-    const {id} = req.params;
-try{
-    
-    const transactionById = await Transaction.findOne({_id : id});
-    return responder({
-        res, 
-        success: true,
-        data: transactionById,
-        message: 'Transaction get successfully.'
+        data: allTransactions
     })
 }
-catch(err){
-    return responder({
-        res, 
-        success: false,
-        message: 'Transaction not featch.'
-    })
-}
+
+const getApiTransactionById = async (req, res) => {
+    const { id } = req.params;
+    try {
+
+        const transactionById = await Transaction.findOne({ _id: id });
+        return responder({
+            res,
+            success: true,
+            data: transactionById,
+            message: 'Transaction get successfully.'
+        })
+    }
+    catch (err) {
+        return responder({
+            res,
+            success: false,
+            message: 'Transaction not featch.'
+        })
+    }
 }
 
-const getApiTransactionUserById = async (req, res)=>{
+const getApiTransactionUserById = async (req, res) => {
     try {
         const { id } = req.params;
-    
-        const transactionUserById = await Transaction.find({ user: id }).populate("user");
-    +
-        // transactionUserById.forEach((singleTransaction) => {
-        //   singleTransaction.user.password = undefined;
-        // });
-        res.json({
-          success: true,
-          data: transactionUserById,
-          message: "user fetch transaction successfully...",
-        });
-      } catch (err) {
-        res.json({
-          success: false,
-          message: err.message,
-        });
-      }
-    };
 
-const putApiTransaction = async (req, res) =>{
+        const transactionUserById = await Transaction.find({ user: id });
+        +
+            // transactionUserById.forEach((singleTransaction) => {
+            //   singleTransaction.user.password = undefined;
+            // });
+            res.json({
+                success: true,
+                data: transactionUserById,
+                message: "user fetch transaction successfully...",
+            });
+    } catch (err) {
+        res.json({
+            success: false,
+            message: err.message,
+        });
+    }
+};
+
+const putApiTransaction = async (req, res) => {
     const { id } = req.params;
 
-    const {  amount, type, category, description} = req.body;
+    const { amount, type, category, description } = req.body;
 
     await Transaction.updateOne({ _id: id },
         {
@@ -100,10 +103,10 @@ const putApiTransaction = async (req, res) =>{
     });
 }
 
-const deleteApiTransaction = async (req, res) =>{
-    const {id} = req.params;
+const deleteApiTransaction = async (req, res) => {
+    const { id } = req.params;
 
-    await Transaction.deleteOne({ _id : id})
+    await Transaction.deleteOne({ _id: id })
     res.json({
         success: true,
         data: {
@@ -113,4 +116,4 @@ const deleteApiTransaction = async (req, res) =>{
     })
 }
 
-export { postApiTransaction , getApiTransaction, getApiTransactionById, getApiTransactionUserById, putApiTransaction, deleteApiTransaction}
+export { postApiTransaction, getApiTransaction, getApiTransactionById, getApiTransactionUserById, putApiTransaction, deleteApiTransaction }

@@ -60,13 +60,11 @@ function Signup() {
        }
    },[])
 
-
    return (
       <div>
          <Navbar/>
          <form className='signup-form'>
             <h2 class='text-center'> Signup Form</h2>
-
             <div>
                <label htmlFor="name"> Name </label>
                <input type="text"

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './AddTransaction.css';
 import showToast from 'crunchy-toast';
 import Navbar from '../../components/Navbar/Navbar.js';
-
+import { useParams } from 'react-router-dom';
 
 function AddTransaction() {
    const [user, setUser] = useState({});
@@ -21,7 +21,6 @@ function AddTransaction() {
          type: type,
          description: description,
          category: category
-
       })
 
       showToast(response?.data?.message, 'success', 3000);
