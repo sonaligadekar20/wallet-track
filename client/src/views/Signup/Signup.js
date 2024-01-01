@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './signup.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import showToast from "crunchy-toast";
 import Navbar from './../../components/Navbar/Navbar.js';
 
@@ -13,56 +13,56 @@ function Signup() {
    const [address, setAddress] = useState('');
    const [gender, setGender] = useState('female');
 
-   const signup = async ()=>{
-       if(!name){
+   const signup = async () => {
+      if (!name) {
          showToast("name is required", "alert", 4000);
-           return;
-       }
+         return;
+      }
 
-       if(!email){
+      if (!email) {
          showToast("email is required", "alert", 4000);
-           return;
-       }
+         return;
+      }
 
-       if(!password){
+      if (!password) {
          showToast("password is required", "alert", 4000);
-           return;
-       }
-       if(!mobile){
+         return;
+      }
+      if (!mobile) {
          showToast("mobile number is required", "alert", 4000);
-           return;
-       }
-       if(!address){
+         return;
+      }
+      if (!address) {
          showToast("address is required", "alert", 4000);
-           return;
-       }
-       const response = await axios.post("/api/signup",{
-           name:name,
-           email:email,
-           password:password,
-           mobile: mobile,
-           address:address,
-           gender:gender
-       })
-       
-       alert(response?.data?.message);
-       if(response?.data?.success){
-           window.location.href = "/login";
-       }
+         return;
+      }
+      const response = await axios.post("/api/signup", {
+         name: name,
+         email: email,
+         password: password,
+         mobile: mobile,
+         address: address,
+         gender: gender
+      })
+
+      alert(response?.data?.message);
+      if (response?.data?.success) {
+         window.location.href = "/login";
+      }
    };
 
-   useEffect(()=>{
-       const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
+   useEffect(() => {
+      const storageUser = JSON.parse(localStorage.getItem("user") || '{}');
 
-       if(storageUser?.email){
-           alert("You are already logged in!");
-           window.location.href = "/";
-       }
-   },[])
+      if (storageUser?.email) {
+         alert("You are already logged in!");
+         window.location.href = "/";
+      }
+   }, [])
 
    return (
       <div>
-         <Navbar/>
+         <Navbar />
          <form className='signup-form'>
             <h2 class='text-center'> Signup Form</h2>
             <div>
@@ -73,7 +73,7 @@ function Signup() {
                   className="form-control"
                   value={name}
                   onChange={(e) => {
-                  setName(e.target.value);
+                     setName(e.target.value);
                   }} />
             </div>
             <div>
@@ -142,15 +142,13 @@ function Signup() {
                />
                <label htmlFor="female" >Female</label>
             </div>
-           <div className='text-center mt-3 '>
-           <button type="button" className="btn btn-primary px-4" onClick={signup}>Signup</button>
-           </div>
+            <div className='text-center mt-3 '>
+               <button type="button" className="btn btn-primary px-4" onClick={signup}>Signup</button>
+            </div>
             <p className="text-right mt-3">
                <Link to="/login">Already have an account?</Link>
             </p>
-
          </form>
-
       </div>
    )
 }
