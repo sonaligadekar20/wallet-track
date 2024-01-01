@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './signup.css';
+import './Lignup.css';
 import { Link } from "react-router-dom";
 import showToast from "crunchy-toast";
 import Navbar from './../../components/Navbar/Navbar.js';
