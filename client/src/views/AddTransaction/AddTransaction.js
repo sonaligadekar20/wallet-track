@@ -70,8 +70,8 @@ function AddTransaction() {
                         }
                      }}
                   />
+                  
                   <label className="type-text ms-2 ">Credit</label>
-         
                       <input
                         type="radio"
                         id="debit"
