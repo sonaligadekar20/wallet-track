@@ -86,7 +86,6 @@ function AddTransaction() {
                         }}
                       />
                       <label className="type-text ms-2">Debit</label>
-               
                </div>
 
                <div>
@@ -107,7 +106,7 @@ function AddTransaction() {
 
                </div>
                <div className="mb-3">
-                  <label className='fs-5  mt-2'>Description</label>
+                  <label className='fs-5  mt-2'> Description </label>
                   <input type="text" className="form-control mt-1"
                      placeholder="Enter  here .... "
                      value={description}
